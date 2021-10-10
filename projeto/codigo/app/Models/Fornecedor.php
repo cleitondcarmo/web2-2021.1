@@ -10,5 +10,5 @@ class Fornecedor extends Model
     use HasFactory;
     protected $table = "fornecedor";
 
-    protected $fillable = ['nome', 'endereco'];
+    protected $fillable = ['nome', 'endereco', 'email'];
 }

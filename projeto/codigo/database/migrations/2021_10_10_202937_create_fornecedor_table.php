@@ -18,6 +18,7 @@ class CreateFornecedorTable extends Migration
             $table->timestamps();
             $table->string('nome', 60);
             $table->string('endereco', 60);
+            $table->string('email', 60);
         });
     }
 
