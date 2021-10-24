@@ -11,4 +11,8 @@ class Fornecedor extends Model
     protected $table = "fornecedor";
 
     protected $fillable = ['nome', 'endereco', 'email'];
+
+    function entrada(){
+        return $this->hasMany(Entrada::class, 'idfornecedor', 'id');
+    }
 }

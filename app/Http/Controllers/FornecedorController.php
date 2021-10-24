@@ -19,10 +19,35 @@ class FornecedorController extends Controller
     }
 
     public function store(Request $request){
-        $Fornecedores = new Fornecedor();
-        $Fornecedores->nome = $request->nome;
-        $Fornecedores->endereco = $request->endereco;
-        $Fornecedores->email = $request->email;
-        $Fornecedores->save();
+        $fornecedor = new fornecedor();
+        $fornecedor->nome = $request->nome;
+        $fornecedor->email = $request->email;
+        $fornecedor->endereco = $request->endereco;
+        $fornecedor->save();
+    }
+
+    public function show($id){
+        if($id){
+            $fornecedor = fornecedor::where('id',$id)->get();
+        }
+        else{
+            $fornecedor = fornecedor::all();
+        }
+        return view('fornecedor.show', ['fornecedor'=>$fornecedor]);
+    }
+
+    public function edit($id){
+        $fornecedor = fornecedor::find($id);
+        return view('fornecedor.edit', ['fornecedor'=>$fornecedor]);
+    }
+
+    public function update(Request $request){
+        fornecedor::find($request->id)->update($request->except('_method'));
+        return redirect('listafornecedor')->with('msg', 'Cadastro realizado com sucesso');
+    }
+
+    public function destroy($id){
+        fornecedor::findOrFail($id)->delete();
+        return redirect('listafornecedor')->with('msg', 'Cadastro apagado');
     }
 }
