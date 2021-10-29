@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>produto</title>
-</head>
-<body>
-    <form action="{{route(produtostore')}}" method="post">
+@extends('layouts.main')
+
+@section('titulo','Cadastro de produtos')
+
+@section('conteudo')
+<div id="form">
+    <form action="{{route('produtostore')}}" method="post">
         @csrf
         <label for="nome">Nome</label>
         <input type="text" name="nome" id="nome">
@@ -24,5 +21,5 @@
         <input type="hidden" name="idproduto" value={{$idproduto}}>
         <input type="submit" value="Cadastrar">
     </form>
-</body>
-</html>
+</div>
+@endsection('conteudo')

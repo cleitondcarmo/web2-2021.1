@@ -20,21 +20,20 @@ use App\Http\Controllers\ItensentradaController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/listacliente', [ClienteController::class, 'listacliente']);
-Route::get('/listafornecedor', [FornecedorController::class, 'listafornecedor']);
-Route::get('/createcliente', [ClienteController::class, 'create']);
-Route::get('/createfornecedor', [FornecedorController::class, 'create']);
-Route::post('/storecliente', [ClienteController::class, 'store'])->name('storecliente');
-Route::post('/storefornecedor', [FornecedorController::class, 'store'])->name('storefornecedor');
-Route::get('/clientes/show/{id}', [ClienteController::class, 'show'])->name('clientesshow');
-Route::get('/clientes/edit/{id}', [ClienteController::class, 'edit'])->name('clientesedit');
-Route::put('/clientes/update/{id}', [ClienteController::class, 'update'])->name('clientesupdate');
-Route::delete('clientes/{id}', [ClienteController::class, 'destroy'])->name('delete');
+Route::get('/clientes/listacliente', [ClienteController::class, 'listacliente'])->name('listacliente');
+Route::get('/clientes/show/{id}', [ClienteController::class, 'show'])->name('clienteshow');
+Route::get('/clientes/edit/{id}', [ClienteController::class, 'edit'])->name('clienteedit');
+Route::get('/clientes/create', [ClienteController::class, 'create'])->name('clientecreate');
 Route::get('/clientes/showendereco', [ClienteController::class, 'showendereco']);
+Route::put('/clientes/update/{id}', [ClienteController::class, 'update'])->name('clientesupdate');
+Route::post('/storecliente', [ClienteController::class, 'store'])->name('storecliente');
+Route::delete('clientes/{id}', [ClienteController::class, 'destroy'])->name('delete');
+Route::get('/fornecedor/listafornecedor', [FornecedorController::class, 'listafornecedor'])->name('listafornecedor');
+Route::get('/fornecedor/create', [FornecedorController::class, 'create'])->name('fornecedorcreate');
+Route::post('/storefornecedor', [FornecedorController::class, 'store'])->name('storefornecedor');
 Route::get('/endereco/show/{id}', [EnderecoController::class, 'show'])->name('enderecoshow');
 Route::get('/endereco/create/{id}', [EnderecoController::class, 'create'])->name('enderecocreate');
 Route::post('/endereco/store', [EnderecoController::class, 'store'])->name('enderecostore');
-
 Route::get('/entrada/show/{id}', [EntradaController::class, 'show'])->name('entradashow');
 Route::get('/entrada/create/{id}', [EntradaController::class, 'create'])->name('entradacreate');
 Route::post('/entrada/store', [EntradaController::class, 'store'])->name('entradastore');
@@ -52,7 +51,7 @@ Route::get('/venda/create/{id}', [VendaController::class, 'create'])->name('vend
 Route::post('/venda/store', [VendaController::class, 'store'])->name('vendastore');
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts.main');
 });
 
 Route::get('/clientes', [ClienteController::class, 'show']);

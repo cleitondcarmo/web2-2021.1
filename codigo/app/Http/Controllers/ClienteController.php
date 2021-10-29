@@ -35,7 +35,7 @@ class ClienteController extends Controller
         else{
             $cliente = Cliente::all();
         }
-        return view('clientes.show', ['clientes'=>$cliente]);
+        return view('clientes.show', ['cliente'=>$cliente]);
     }
 
     public function edit($id){
@@ -45,7 +45,7 @@ class ClienteController extends Controller
 
     public function update(Request $request){
         Cliente::find($request->id)->update($request->except('_method'));
-        return redirect('listacliente')->with('msg', 'Cadastro realizado com sucesso');
+        return redirect('clientes/listacliente')->with('msg', 'Cadastro realizado com sucesso');
     }
 
     public function destroy($id){

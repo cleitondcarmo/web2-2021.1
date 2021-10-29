@@ -1,0 +1,101 @@
+body{
+    margin:0;
+    padding: 0;
+    background: rgb(255, 255, 255);
+}
+
+#container {
+    width: auto;
+    height: 800px;
+    display: grid;
+    grid-template-rows: 7% 5% 100%;
+    grid-template-columns: 20% 60% 20%;
+    grid-template-areas: "logo header header" "logo nav nav" "conteudo conteudo aside" "footer footer footer";
+}
+
+.containerLogo{ grid-area: logo;}
+.containerHeader{ grid-area: header;}
+.containerNav{ grid-area: nav;}
+.containerConteudo{ grid-area: conteudo;}
+.containerAside{ grid-area: aside;}
+.containerFooter{ grid-area: footer;}
+
+#logo {
+    margin: 5px;
+    background-color: aqua;
+    text-align: center;
+    align-items: center;
+}
+
+#header {
+    background: rgb(2, 199, 199);
+    text-align: center;
+}
+
+
+#nav {
+    background: rgb(0, 0, 0);
+    text-align: end;
+}
+
+#conteudo{
+    width: auto;
+    margin: 10px;
+    text-align: center;
+}
+
+#aside{
+    background-color: cornflowerblue;
+    width: auto;
+    height: 100%;
+    text-align: center;
+}
+
+#footer {
+    background: rgb(0, 0, 0);
+    padding: 5px;
+    bottom: 0;
+    position: fixed;
+    text-align: center;
+    width: 100%;
+}
+
+#nav li {
+    display: inline;
+    margin-right: 20px;
+}
+
+#nav li a {
+    text-decoration: none;
+    color:rgb(0, 204, 255);
+}
+
+#conteudo li{
+    text-decoration: none;
+    list-style: none;
+    color:rgb(0, 4, 255);
+}
+
+#conteudo ul{
+    width: 25%;
+    height: 150px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-left: 0px;
+    margin-right: 0px;
+    margin-left: 0px;
+    float: left;
+}
+
+#conteudo li a {
+    text-decoration: none;
+    list-style: none;
+    color:rgb(252, 248, 1);
+    background-color: black;
+}
+
+#nav li a:hover {
+    text-decoration: none;
+    color: rgb(7, 7, 7);
+    background-color: rgb(255, 255, 255);
+}
