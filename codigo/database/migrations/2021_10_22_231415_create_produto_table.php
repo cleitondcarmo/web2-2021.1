@@ -22,6 +22,7 @@ class CreateProdutoTable extends Migration
             $table->float('desconto');
             $table->float('frete');
             $table->integer('quantidade');
+            $table->string('imagem');
         });
     }
 

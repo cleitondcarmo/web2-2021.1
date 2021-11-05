@@ -21,11 +21,17 @@ class ClienteController extends Controller
     }
 
     public function store(Request $request){
+        $request->validate([
+            'nome' => 'required',
+            'debito' => 'required',
+        ]);
+
         $cliente = new Cliente();
         $cliente->nome = $request->nome;
         $cliente->debito = $request->debito;
-        $cliente->endereco = $request->endereco;
         $cliente->save();
+
+        return redirect('clientes/listacliente')->with('msg', 'Cadastro realizado com sucesso');
     }
 
     public function show($id){
@@ -50,7 +56,7 @@ class ClienteController extends Controller
 
     public function destroy($id){
         Cliente::findOrFail($id)->delete();
-        return redirect('listacliente')->with('msg', 'Cadastro apagado');
+        return redirect('clientes/listacliente')->with('msg', 'Cadastro apagado');
     }
 
     public function showendereco(){

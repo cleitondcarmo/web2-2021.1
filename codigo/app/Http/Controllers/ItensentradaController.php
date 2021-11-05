@@ -7,6 +7,16 @@ use App\Models\Itensentrada;
 
 class ItensentradaController extends Controller
 {
+    public function listaitensentrada(){
+        $itensentrada = Itensentrada::all();
+
+        return view('itensentrada.listaitensentrada',['itensentrada'=>$itensentrada]);
+    }
+
+    public function create(){
+        return view('itensentrada.create');
+    }
+
     public function show($id){
         $itensentrada = Itensentrada::find($id);
 
@@ -28,11 +38,16 @@ class ItensentradaController extends Controller
         }
     }
 
-    public function create($id){
-        return view('itensentrada.create', ['idproduto'=>$id]) ('itensentrada.create', ['idvenda'=>$id]);
-    }
-
     public function store(Request $request){
+        $request->validate([
+            'precocompra' => 'required',
+            'quantidade' => 'required',
+            'unidade' => 'required',
+            'frete' => 'required',
+            'idproduto' => 'required',
+            'identrada' => 'required',
+        ]);
+
         $itensentrada = new itensentrada();
         $itensentrada->precocompra = $request->precocompra;
         $itensentrada->quantidade = $request->quantidade;
@@ -41,7 +56,20 @@ class ItensentradaController extends Controller
         $itensentrada->idproduto = $request->idproduto;
         $itensentrada->identrada = $request->identrada;
         $itensentrada->save();
+    }
 
-        return redirect()->route('entradashow', ['id' => 5]);
+    public function edit($id){
+        $itensentrada = Itensentrada::find($id);
+        return view('itensentrada.edit', ['itensentrada'=>$itensentrada]);
+    }
+
+    public function update(Request $request){
+        Itensentrada::find($request->id)->update($request->except('_method'));
+        return redirect('itensentrada/listaitensentrada')->with('msg', 'Cadastro realizado com sucesso');
+    }
+
+    public function destroy($id){
+        Itensentrada::findOrFail($id)->delete();
+        return redirect('itensentrada/listaitensentrada')->with('msg', 'Cadastro apagado');
     }
 }

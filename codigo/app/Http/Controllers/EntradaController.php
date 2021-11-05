@@ -7,6 +7,12 @@ use App\models\Entrada;
 
 class EntradaController extends Controller
 {
+    public function listaentrada(){
+        $entrada = Entrada::all();
+
+        return view('entrada.listaentrada',['entrada'=>$entrada]);
+    }
+
     public function show($id){
         $entrada = Entrada::find($id);
 
@@ -22,16 +28,34 @@ class EntradaController extends Controller
         }
     }
 
-    public function create($id){
-        return view('entrada.create', ['idfornecedor'=>$id]);
+    public function create(){
+        return view('entrada.create') ;
     }
 
     public function store(Request $request){
+        $request->validate([
+            'valortotal' => 'required',
+            'idfornecedor' => 'required',
+        ]);
+
         $entrada = new entrada();
         $entrada->valortotal = $request->valortotal;
         $entrada->idfornecedor = $request->idfornecedor;
         $entrada->save();
+    }
 
-        return redirect()->route('fornecedorshow', ['id' => 5]);
+    public function edit($id){
+        $entrada = Entrada::find($id);
+        return view('entrada.edit', ['entrada'=>$entrada]);
+    }
+
+    public function update(Request $request){
+        Entrada::find($request->id)->update($request->except('_method'));
+        return redirect('entrada/listaentrada')->with('msg', 'Cadastro realizado com sucesso');
+    }
+
+    public function destroy($id){
+        Entrada::findOrFail($id)->delete();
+        return redirect('entrada/listaentrada')->with('msg', 'Cadastro apagado');
     }
 }

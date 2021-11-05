@@ -3,19 +3,50 @@
 @section('titulo', 'Lista de clientes')
 
 @section('conteudo')
-    <div id="form">
-        @foreach ($clientes as $cliente)
-        <ul>
-            <li> Nome do cliente: {{$cliente->nome}} </li>
-            <li> Debito do cliente: {{$cliente->debito}} </li>
-            <li><a href="{{route('clienteedit', ['id' => $cliente->id])}}">editar cliente</a></li>
-
-            <form action="{{route('listacliente')}}" method="POST">
-                @csrf
-                @method('DELETE')
-                <input type="submit" value="deletar">
-            </form>
-        </ul>
-        @endforeach
-    </div>
+<div class="stylecliente">
+    <ul>
+        <table class="table table-bordered .table-responsive table-dark">
+            <div>
+                <thead>
+                    <tr class="table-active">
+                        <th scope="col" width=30%>Cliente:</th>
+                        <th scope="col" width=30%>Debito:</th>
+                        <th scope="col" width=1%></th>
+                        <th scope="col" width=1%></th>
+                        <th scope="col" width=1%></th>
+                    </tr>
+                </thead>
+            </div>
+            @foreach ($clientes as $cliente)
+                <tr>
+                    <div>
+                        <div>
+                            <td> <a href="{{route('clienteshow', ['id' => $cliente->id])}}" style="color:rgb(0, 204, 255);"><?php echo $cliente->nome; ?> </a></td>
+                            <td> <?php echo $cliente->debito; ?> </td>
+                        </div>
+                        <td>
+                            <form action="{{route('enderecoshow', ['id' => $cliente->id])}}">
+                                <button name="endereco" type="submit" class="btn btn-warning">Endereços</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="{{route('clienteedit', ['id' => $cliente->id])}}">
+                                <button name="alterar" type="submit" class="btn btn-warning">Alterar</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="{{route('listacliente')}}" method="POST">
+                                <div>
+                                    @csrf
+                                    @method('DELETE')
+                                    <button name="excluir" type="submit" class="btn btn-danger" value="deletar">Excluir</button>
+                                </div>
+                            </form>
+                        </td>
+                    </div>
+                </tr>
+            @endforeach
+        </table>
+    </ul>
+</div>
 @endsection('conteudo')

@@ -19,6 +19,12 @@ class FornecedorController extends Controller
     }
 
     public function store(Request $request){
+        $request->validate([
+            'nome' => 'required',
+            'email' => 'required',
+            'endereco' => 'required',
+        ]);
+
         $fornecedor = new fornecedor();
         $fornecedor->nome = $request->nome;
         $fornecedor->email = $request->email;
@@ -43,11 +49,11 @@ class FornecedorController extends Controller
 
     public function update(Request $request){
         fornecedor::find($request->id)->update($request->except('_method'));
-        return redirect('listafornecedor')->with('msg', 'Cadastro realizado com sucesso');
+        return redirect('fornecedor/listafornecedor')->with('msg', 'Cadastro realizado com sucesso');
     }
 
     public function destroy($id){
         fornecedor::findOrFail($id)->delete();
-        return redirect('listafornecedor')->with('msg', 'Cadastro apagado');
+        return redirect('fornecedor/listafornecedor')->with('msg', 'Cadastro apagado');
     }
 }
