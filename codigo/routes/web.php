@@ -4,11 +4,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\FornecedorController;
 use App\Http\Controllers\EnderecoController;
-use App\Http\Controllers\EntradaController;
+use App\Http\Controllers\ComprasController;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\VendaController;
 use App\Http\Controllers\ItensvendaController;
 use App\Http\Controllers\ItensentradaController;
+use App\Http\Controllers\FinancasController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CategoriasController;
+use App\Http\Controllers\RelatoriosController;
 
 //Clientes
 Route::get('/clientes/listacliente', [ClienteController::class, 'listacliente'])->name('listacliente');
@@ -38,14 +42,14 @@ Route::put('/endereco/update/{id}', [EnderecoController::class, 'update'])->name
 Route::post('/storeendereco', [EnderecoController::class, 'store'])->name('storeendereco');
 Route::delete('endereco/{id}', [EnderecoController::class, 'destroy'])->name('delete');
 
-//Entrada
-Route::get('/entrada/listaentrada', [EntradaController::class, 'listaentrada'])->name('listaentrada');
-Route::get('/entrada/show/{id}', [EntradaController::class, 'show'])->name('entradashow');
-Route::get('/entrada/create', [EntradaController::class, 'create'])->name('entradacreate');
-Route::get('/entrada/edit/{id}', [EntradaController::class, 'edit'])->name('entradaedit');
-Route::put('/entrada/update/{id}', [EntradaController::class, 'update'])->name('entradaupdate');
-Route::post('/entrada/store', [EntradaController::class, 'store'])->name('entradastore');
-Route::delete('entrada/{id}', [EntradaController::class, 'destroy'])->name('delete');
+//compras
+Route::get('/compras/listacompras', [ComprasController::class, 'listacompras'])->name('listacompras');
+Route::get('/compras/show/{id}', [ComprasController::class, 'show'])->name('comprasshow');
+Route::get('/compras/create', [ComprasController::class, 'create'])->name('comprascreate');
+Route::get('/compras/edit/{id}', [ComprasController::class, 'edit'])->name('comprasedit');
+Route::put('/compras/update/{id}', [ComprasController::class, 'update'])->name('comprasupdate');
+Route::post('/compras/store', [ComprasController::class, 'store'])->name('comprasstore');
+Route::delete('compras/{id}', [ComprasController::class, 'destroy'])->name('delete');
 
 //Itensvenda
 Route::get('/itensvenda/listaitensvenda', [ItensvendaController::class, 'listaitensvenda'])->name('listaitensvenda');
@@ -84,9 +88,35 @@ Route::get('/venda/edit/{id}', [VendaController::class, 'edit'])->name('vendaedi
 Route::get('/venda/showcliente', [VendaController::class, 'showcliente'])->name('showcliente');
 Route::put('/venda/update/{id}', [VendaController::class, 'update'])->name('vendaupdate');
 
+//Categorias
+Route::get('/categorias/listacategorias', [CategoriasController::class, 'listacategorias'])->name('listacategorias');
+Route::get('/categorias/show/{id}', [CategoriasController::class, 'show'])->name('categoriasshow');
+Route::get('/categorias/create', [CategoriasController::class, 'create'])->name('categoriascreate');
+Route::get('/categorias/edit/{id}', [CategoriasController::class, 'edit'])->name('categoriasedit');
+Route::put('/categorias/update/{id}', [CategoriasController::class, 'update'])->name('categoriasupdate');
+Route::post('/categorias/store', [CategoriasController::class, 'store'])->name('categoriasstore');
+Route::delete('categorias/{id}', [CategoriasController::class, 'destroy'])->name('delete');
+
+//Funcionarios
+Route::get('/funcionarios/show/{id}', [FuncionariosController::class, 'show'])->name('funcionariosshow');
+Route::get('/funcionarios/create', [FuncionariosController::class, 'create'])->name('funcionarioscreate');
+Route::get('/funcionarios/listafuncionarios', [FuncionariosController::class, 'listafuncionarios'])->name('listafuncionarios');
+Route::get('/img/funcionarios', [FuncionariosController::class, 'imgfuncionarios'])->name('imgfuncionarios');
+Route::get('/funcionarios/edit/{id}', [FuncionariosController::class, 'edit'])->name('funcionariosedit');
+Route::put('/funcionarios/update/{id}', [FuncionariosController::class, 'update'])->name('funcionariosupdate');
+Route::get('/funcionarios/show/{id}', [FuncionariosController::class, 'show'])->name('funcionariosshow');
+Route::post('/funcionarios/store', [FuncionariosController::class, 'store'])->name('funcionariosstore');
+
+//Finanças
+Route::get('/financas/showfinancas', [FinancasController::class, 'showfinancas'])->name('showfinancas');
+
+//Relatórios
+Route::get('/relatorios/showrelatorios', [RelatoriosController::class, 'showrelatorios'])->name('showrelatorios');
+
+//Dashboard
+Route::get('/dashboard/showdashboard', [DashboardController::class, 'showdashboard'])->name('showdashboard');
+
 Route::get('/', function () {
     return view('layouts.main');
 });
 
-Route::get('/clientes', [ClienteController::class, 'show']);
-Route::get('/fornecedor', [FornecedorController::class, 'show']);

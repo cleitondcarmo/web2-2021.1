@@ -15,64 +15,49 @@
 
 <body>
     <div id="container">
-        <div id="logo" class="containerLogo">
-            <img src="{{route('imgproduto')}}/logo.png">
-        </div>
-        <div id="bside" class="containerAlgo">
-            <img src="{{route('imgproduto')}}/bside.png">
-        </div>
-        <div id="header" class="containerHeader">
-            <h1>Sistema de vendas</h1>
+        <div id="aside" class="containerAside">
+            <div>
+                <div id="painel">
+                    <a href="{{route('showdashboard')}}"><img src="{{route('imgproduto')}}/Painel.png"></a>
+                </div>
+            </div>
+            <div>
+                <div id="cliente">
+                    <a href="{{route('listacliente')}}"><img src="{{route('imgproduto')}}/Clientes.png"></a>
+                </div>
+                <div id="produtos">
+                    <a href="{{route('listaproduto')}}"><img src="{{route('imgproduto')}}/Produtos.png"></a>
+                </div>
+                <div id="categorias">
+                    <a href="{{route('listacategorias')}}"><img src="{{route('imgproduto')}}/Categorias.png"></a>
+                </div>
+                <div id="vendas">
+                    <a href="{{route('listavenda')}}"><img src="{{route('imgproduto')}}/Vendas.png"></a>
+                </div>
+                <div id="compras">
+                    <a href="{{route('listacompras')}}"><img src="{{route('imgproduto')}}/Compras.png"></a>
+                </div>
+                <div id="fornecedor">
+                    <a href="{{route('listafornecedor')}}"><img src="{{route('imgproduto')}}/Fornecedor.png"></a>
+                </div>
+                <div id="financas">
+                    <a href="{{route('showfinancas')}}"><img src="{{route('imgproduto')}}/Financas.png"></a>
+                </div>
+                <div id="relatorios">
+                    <a href="{{route('showrelatorios')}}"><img src="{{route('imgproduto')}}/Relatorios.png"></a>
+                </div>
+            </div>
+            <div>
+                <div id="logout">
+                    <a href="{{route('listavenda')}}"><img src="{{route('imgproduto')}}/Logout.png"></a>
+                </div>
+            </div>
         </div>
         <div id="nav" class="containerNav">
-            <ul class="nav justify-content-end">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="{{route('listacliente')}}">Clientes</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{route('clientecreate')}}">Cadastrar clientes</a></li>
-                        <li><a class="dropdown-item" href="{{route('listacliente')}}">Listar clientes</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="{{route('listaproduto')}}">Produtos</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{route('produtocreate')}}">Cadastrar produtos</a></li>
-                        <li><a class="dropdown-item" href="{{route('listaproduto')}}">Listar produtos</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="{{route('listafornecedor')}}">Fornecedores</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{route('fornecedorcreate')}}">Cadastrar fornecedores</a></li>
-                        <li><a class="dropdown-item" href="{{route('listafornecedor')}}">Listar fornecedores</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Vendas</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{route('vendacreate')}}">Cadastrar vendas</a></li>
-                        <li><a class="dropdown-item" href="{{route('listavenda')}}">Listar vendas</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">Endereços</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{route('enderecocreate')}}">Cadastrar endereços</a></li>
-                        <li><a class="dropdown-item" href="{{route('listaendereco')}}">Listar endereços</a></li>
-                    </ul>
-                </li>
-            </ul>
+            <img src="{{route('imgproduto')}}/logo.png">
         </div>
         <div id="conteudo" class="containerConteudo">
             @yield('conteudo')
-        </div>
-        <div id="aside" class="containerAside">
-            <img src="{{route('imgproduto')}}/propaganda1.jpeg">
-            <img src="{{route('imgproduto')}}/propaganda2.png">
-            <img src="{{route('imgproduto')}}/propaganda3.jpg">
-        </div>
-        <div id="footer" class="containerFooter">
-            Copyright @ WebII
         </div>
     </div>
     <!-- JavaScript Bundle with Popper -->
